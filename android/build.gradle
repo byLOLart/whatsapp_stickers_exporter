@@ -2,14 +2,14 @@ group 'moe.star39.whatsapp_stickers_exporter'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.9.0'  // Actualizado a una versión más reciente
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:8.3.0'  // Actualizado a 8.3.0
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -25,15 +25,16 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 33
+    namespace 'moe.star39.whatsapp_stickers_exporter'  // Añadido namespace
+    compileSdkVersion 34  // Actualizado a 34
 
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17  // Actualizado a Java 17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'  // Actualizado a Java 17
     }
 
     sourceSets {
@@ -42,5 +43,12 @@ android {
 
     defaultConfig {
         minSdkVersion 21
+        targetSdkVersion 34  // Añadido targetSdkVersion
     }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.12.0'  // Añadido dependencias básicas
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
